@@ -1,2 +1,8 @@
 Django
-django-toolbelt
+dj-database-url
+dj-static
+gunicorn
+static
+wsgiref
+South
+psycopg2

@@ -44,7 +44,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mark_management',
+    #'mark_management',
+    #South has to be the last entry in the list
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,12 +69,15 @@ WSGI_APPLICATION = 'mark_management_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'database.db'),
     }
 }
 
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+
+sqlite__format = 'sqlite:///{0}'.format(os.path.join(BASE_DIR, 'database.db'))
+print(sqlite__format)
+DATABASES['default'] =  dj_database_url.config(default=sqlite__format)
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
