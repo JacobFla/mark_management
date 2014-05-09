@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'mark_management',
+    'mark_management',
     #South has to be the last entry in the list
     'south',
 )
