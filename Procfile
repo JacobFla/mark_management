@@ -1,0 +1,1 @@
+web: gunicorn mark_management_project.wsgi

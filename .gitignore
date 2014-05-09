@@ -1,0 +1,6 @@
+*.pyc
+.idea
+Thumbs.db
+db.sqlite3
+venv
+staticfiles
