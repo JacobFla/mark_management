@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+   <head>
+     <!-- Common Kendo UI Web CSS -->
+     <link href="styles/kendo.common.min.css" rel="stylesheet" />
+     <!-- Default Kendo UI Web theme CSS -->
+     <link href="styles/kendo.default.min.css" rel="stylesheet" />
+     <!-- jQuery JavaScript -->
+     <script src="js/jquery.min.js"></script>
+     <!-- Kendo UI Web combined JavaScript -->
+     <script src="js/kendo.web.min.js"></script>
+   </head>
+   <body>
+     <div id="example" class="k-content">
+            <div id="vertical">
+                <div id="top-pane">
+                    <h1>Bereich mit unseren Formal</h1>
+                </div>
+                <div id="bottom-pane">
+                    <div class="pane-content">
+                     <div id="horizontal">
+                        <div id="left-pane">
+                            <div class="pane-content">
+                                <h3>Linke spalte mit unseren ergebnissen</h3>
+                            </div>
+                        </div>
+                        <div id="right-pane">
+                            <div class="pane-content">
+                                <h3>rechte Spalte mit unseren Diagrammen</h3>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#vertical").kendoSplitter({
+                        orientation: "vertical",
+                        panes: [
+                            { collapsible: false },
+                            { collapsible: false, size: "600px" },
+                        ]
+                    });
+
+                    $("#horizontal").kendoSplitter({
+                        panes: [
+                            { collapsible: false},
+                            { collapsible: false },
+                        ]
+                    });
+                });
+            </script>
+   </body>
+</html>
