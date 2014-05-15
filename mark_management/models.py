@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 class Semester(models.Model):
     begin = models.DateField()
@@ -26,6 +27,12 @@ class Subject(models.Model):
         typs = self.typs.all().values_list("name", flat=True)
         return ", ".join(typs)
     get_typs.short_description = "Typs"
+    def get_avg(self):
+        average = Decimal("0.00")
+        Mark.objects.all().aggregate(Avg('value'))
+        return average.quantize(Decimal("0.00"))
+
+
 
 class Typ(models.Model):
     name = models.CharField(max_length=255)
