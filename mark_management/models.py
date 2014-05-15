@@ -46,7 +46,8 @@ class Subject(models.Model):
     get_typs.short_description = "Typs"
     def get_avg(self):
         average = Decimal("0.00")
-        Mark.objects.all().aggregate(Avg('value'))
+        for Mark in Mark.objects.filter(subject=self)
+            average += mark.value * mark.typ.valance
         return average.quantize(Decimal("0.00"))
 
 
