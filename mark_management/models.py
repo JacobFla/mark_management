@@ -31,6 +31,7 @@ class Subject(models.Model):
         average = Decimal("0.00")
         Mark.objects.all().aggregate(Avg('value'))
         return average.quantize(Decimal("0.00"))
+    #
 
 
 
