@@ -1,0 +1,75 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+    <!-- Common Kendo UI Web CSS -->
+    <link href="{% static 'mark_management/styles/kendo.common.min.css' %}" rel="stylesheet"/>
+    <!-- Default Kendo UI Web theme CSS -->
+    <link href="{% static 'mark_management/styles/kendo.default.min.css' %}" rel="stylesheet"/>
+    <!-- jQuery JavaScript -->
+    <script src="{% static 'mark_management/js/jquery.min.js' %}"></script>
+    <!-- Kendo UI Web combined JavaScript -->
+    <script src="{% static 'mark_management/js/kendo.web.min.js' %}"></script>
+</head>
+<body>
+<div id="example" class="k-content" >
+    <div id="vertical" style="height: 900px">
+        <div id="top-pane">
+            <div class="pane-content">
+                {% block top %}{% endblock %}
+            </div>
+        </div>
+        <div id="bottom-pane">
+            <div class="pane-content">
+                <div id="horizontal">
+                    <div id="left-pane">
+                        <div class="pane-content">
+                            {% block list %}{% endblock %}
+                        </div>
+                    </div>
+                    <div id="right-pane">
+                        <div class="pane-content">
+                            {% block diagram %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#vertical").kendoSplitter({
+                orientation: "vertical",
+                panes: [
+                    { collapsible: false, resizable: false, size: "100px" },
+                    { resizable: false, collapsible: false }
+                ]
+            });
+
+            $("#horizontal").kendoSplitter({
+                panes: [
+                    { resizable: false, collapsible: false },
+                    { resizable: false, collapsible: false }
+                ]
+            });
+            $(window).resize(function () {
+                resizeSplitter()
+            });
+
+            var resizeSplitter = function () {
+                var topHeight = 200;
+                var centerHeight = $(window).height() - topHeight;
+
+                var splitter = $("#vertical").data("kendoSplitter");
+
+                splitter.size("#top-pane", topHeight + "px");
+                splitter.size("#bottom-pane", centerHeight + "px");
+
+                splitter.trigger("resize")
+            };
+        });
+    </script>
+</body>
+</html>
